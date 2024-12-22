@@ -3,7 +3,7 @@ import cors from "cors";
 
 const PORT = 8080;
 const app = express();
-const database = { data: "Hello World" };
+const database = { data: "Hello World", signature: "" };
 
 app.use(cors());
 app.use(express.json());
@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
 
 app.post("/", (req, res) => {
   database.data = req.body.data;
+  database.signature = req.body.signature;
   res.sendStatus(200);
 });
 
